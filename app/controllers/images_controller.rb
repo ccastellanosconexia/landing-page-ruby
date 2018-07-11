@@ -1,4 +1,5 @@
 class ImagesController < ApplicationController
+
     def new
         @image = Image.new
     end
@@ -9,6 +10,8 @@ class ImagesController < ApplicationController
 
         redirect_to @image
     end
+
+   
 
     def update
         @image = Image.find params[:id]
@@ -25,11 +28,45 @@ class ImagesController < ApplicationController
         @image = Image.find params[:id]
     end
 
-    alias edit show
+    def destroy 
+        @image = Image.find params [:id]
+        @image.destroy
+        redirect_to images_path
+    end
+
+    def edit
+
+        @image = Image.find params[:id]
+        
+    end
+
+    def update
+
+        @image = Image.find params[:id]
+        
+        @image.update images_params
+        
+        redirect_to @image
+    end
+
+    def destroy
+
+        @image = Image.find params[:id]
+        
+        @image.destroy
+        
+        redirect_to images_path
+        
+    end
+        
+     
+
+  #  alias edit show
 
     private
 
     def images_params
         params.require(:image).permit(:description)
     end
+
 end

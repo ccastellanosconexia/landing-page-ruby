@@ -1,3 +1,11 @@
-<h2>Editing</h2>
+<%= form_for @image do |f| %>
 
-<%= render 'form' %>
+<%= f.label :description %> <br>
+
+<%= f.text_field :description %>
+
+<br>
+
+<%= f.submit %>
+
+<% end %>
